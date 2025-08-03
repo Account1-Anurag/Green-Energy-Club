@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Energy Club</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: rgba(46, 125, 50, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #81C784;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(139, 195, 74, 0.8));
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2e7d32;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #2e7d32;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .achievements {
+            background: linear-gradient(135deg, #E8F5E8, #F1F8E9);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .achievements h4 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+
+        .achievements ul {
+            list-style: none;
+        }
+
+        .achievements li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .achievements li::before {
+            content: '🌱';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Cards Section */
+        .cards-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #4CAF50;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .card h3 {
+            color: #2e7d32;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .role {
+            color: #666;
+            font-size: 0.9rem;
+            background: linear-gradient(45deg, #E8F5E8, #F1F8E9);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .card .department {
+            color: #4CAF50;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Timeline Styles */
+        .timeline-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #4CAF50, #8BC34A);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 3rem 0;
+            opacity: 0;
+            animation: slideInTimeline 0.6s ease forwards;
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 2rem);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 2rem);
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+            z-index: 3;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-left-color: #ffffff;
+            z-index: 4;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-right-color: #ffffff;
+            z-index: 4;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            top: -1rem;
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            z-index: 5;
+            white-space: nowrap;
+            border: 3px solid white;
+        }
+
+        .event-title {
+            color: #2e7d32;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .event-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .event-location {
+            background: linear-gradient(45deg, #E8F5E8, #F1F8E9);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+            color: #2e7d32;
+        }
+
+        /* Projects Showcase */
+        .projects-section {
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(139, 195, 74, 0.1));
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title {
+            color: #2e7d32;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-completed {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+        }
+
+        .status-ongoing {
+            background: linear-gradient(45deg, #FF9800, #FFC107);
+            color: white;
+        }
+
+        .status-planned {
+            background: linear-gradient(45deg, #2196F3, #03DAC6);
+            color: white;
+        }
+
+        /* Impact Counter */
+        .impact-section {
+            background: linear-gradient(135deg, #2e7d32, #388e3c);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .impact-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .impact-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #81C784;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A, #81C784, #A5D6A7);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        @keyframes slideInTimeline {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2e7d32, #388e3c);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .contact h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Floating Elements */
+        .floating-icon {
+            position: fixed;
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                display: none;
+            }
+
+            .timeline-date {
+                position: relative;
+                left: auto;
+                transform: none;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .about, .cards-section {
+                padding: 2rem 1rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Icons -->
+    <div class="floating-icon">🌱</div>
+    <div class="floating-icon">🔋</div>
+    <div class="floating-icon">🌿</div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">🌱</div>
+                <h1>Green Energy Club</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Powering Tomorrow with Clean Energy</h2>
+        <p>Join us in our mission to create a sustainable future through innovative green energy solutions, environmental awareness, and hands-on projects.</p>
+        <a href="#about" class="cta-button">Explore Our Mission</a>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="about">
+                <h2 class="section-title">About Our Club</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Our Mission</h3>
+                        <p>The Green Energy Club is dedicated to promoting sustainable energy solutions and environmental consciousness among students and the community.</p>
+                        <p>We conduct various programs on special occasions like Earth Day and Environment Day, organize plantation drives, and work on innovative green technology projects.</p>
+                    </div>
+                    <div class="achievements">
+                        <h4>Our Achievements</h4>
+                        <ul>
+                            <li>Successfully fabricated an E-Bike with sustainable technology</li>
+                            <li>Developed a Solar Vehicle prototype</li>
+                            <li>Organized multiple plantation drives</li>
+                            <li>Conducted awareness programs on Earth Day & Environment Day</li>
+                            <li>Promoted green energy solutions across campus</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Timeline -->
+        <section class="section" id="events">
+            <div class="timeline-section">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Aug 15, 2025</div>
+                        <div class="timeline-content">
+                            <h3 class="event-title">🇮🇳 Independence Day Green Drive</h3>
+                            <p class="event-description">Celebrate independence with a massive tree plantation drive. Join us in planting 200+ saplings across the campus.</p>
+                            <span class="event-location">📍 College Campus & Nearby Areas</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Sep 5, 2025</div>
+                        <div class="timeline-content">
+                            <h3 class="event-title">👩‍🏫 Teachers' Day Solar Workshop</h3>
+                            <p class="event-description">Honor our teachers by showcasing our solar projects and conducting hands-on workshops on renewable energy.</p>
+                            <span class="event-location">📍 Engineering Labs</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Oct 2, 2025</div>
+                        <div class="timeline-content">
+                            <h3 class="event-title">♻️ Gandhi Jayanti Waste-to-Energy Expo</h3>
+                            <p class="event-description">Demonstrate innovative waste-to-energy solutions and promote sustainable living practices inspired by Gandhian principles.</p>
+                            <span class="event-location">📍 Main Auditorium</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Nov 14, 2025</div>
+                        <div class="timeline-content">
+                            <h3 class="event-title">💡 Children's Day Innovation Fair</h3>
+                            <p class="event-description">Inspire young minds with interactive displays of our E-Bike, Solar Vehicle, and other green technology innovations.</p>
+                            <span class="event-location">📍 College Ground</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Dec 25, 2025</div>
+                        <div class="timeline-content">
+                            <h3 class="event-title">🎄 Green Christmas Campaign</h3>
+                            <p class="event-description">Spread joy with eco-friendly celebrations, LED decoration workshops, and solar-powered Christmas light installations.</p>
+                            <span class="event-location">📍 Community Centers</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Jan 26, 2026</div>
+                        <div class="timeline-content">
+                            <h3 class="event-title">🏛️ Republic Day Clean Energy Parade</h3>
+                            <p class="event-description">Showcase our achievements with a parade featuring our solar vehicles and promote clean energy awareness among citizens.</p>
+                            <span class="event-location">📍 City Main Road</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase -->
+        <section class="section" id="projects">
+            <div class="projects-section">
+                <h2 class="section-title">Our Green Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">🚲</div>
+                        <h3 class="project-title">Electric Bike (E-Bike)</h3>
+                        <p class="project-description">Our flagship project - a fully functional electric bike with regenerative braking, solar charging capability, and a range of 50km per charge. Built with sustainable materials and eco-friendly components.</p>
+                        <span class="project-status status-completed">Completed</span>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">🚗</div>
+                        <h3 class="project-title">Solar Vehicle</h3>
+                        <p class="project-description">A prototype solar-powered vehicle capable of running entirely on solar energy. Features advanced photovoltaic cells and energy-efficient motor systems for sustainable transportation.</p>
+                        <span class="project-status status-completed">Completed</span>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">🌊</div>
+                        <h3 class="project-title">Hydro-Power Generator</h3>
+                        <p class="project-description">Currently developing a micro-hydro power system that can generate electricity from small water streams. Perfect for rural electrification and sustainable power generation.</p>
+                        <span class="project-status status-ongoing">In Progress</span>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">💨</div>
+                        <h3 class="project-title">Wind Energy Harvester</h3>
+                        <p class="project-description">Designing an innovative vertical-axis wind turbine optimized for urban environments. Features low noise operation and high efficiency at low wind speeds.</p>
+                        <span class="project-status status-planned">Planning Phase</span>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">🏠</div>
+                        <h3 class="project-title">Smart Green Campus</h3>
+                        <p class="project-description">An IoT-based system to monitor and optimize energy consumption across the campus. Includes smart lighting, automated irrigation, and real-time energy tracking.</p>
+                        <span class="project-status status-ongoing">In Progress</span>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">♻️</div>
+                        <h3 class="project-title">Waste-to-Biogas Plant</h3>
+                        <p class="project-description">Planning a campus-wide biogas generation system that converts organic waste into clean cooking gas and organic fertilizer, promoting circular economy principles.</p>
+                        <span class="project-status status-planned">Planning Phase</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="section">
+            <div class="impact-section">
+                <h2 class="section-title" style="color: white;">Our Environmental Impact</h2>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <span class="impact-number" data-count="500">0</span>
+                        <span class="impact-label">Trees Planted</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-number" data-count="25">0</span>
+                        <span class="impact-label">Projects Completed</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-number" data-count="1200">0</span>
+                        <span class="impact-label">Students Impacted</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-number" data-count="15">0</span>
+                        <span class="impact-label">Tons CO₂ Saved</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section">
+            <div class="gallery-section">
+                <h2 class="section-title">Project Gallery</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem;">Showcasing our green energy innovations and environmental initiatives</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">🚲</div>
+                    <div class="gallery-item">🌱</div>
+                    <div class="gallery-item">🔋</div>
+                    <div class="gallery-item">☀️</div>
+                    <div class="gallery-item">🌿</div>
+                    <div class="gallery-item">⚡</div>
+                    <div class="gallery-item">🏭</div>
+                    <div class="gallery-item">🌍</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section" id="team">
+            <div class="cards-section">
+                <h2 class="section-title">Meet Our Team</h2>
+                
+                <h3 style="text-align: center; color: #2e7d32; margin-bottom: 2rem;">Faculty Coordinators</h3>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-avatar">Dr</div>
+                            <h3>Dr. Rashmi Shah</h3>
+                            <div class="role">Faculty Coordinator</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-avatar">Dr</div>
+                            <h3>Dr. Namita Saxena</h3>
+                            <div class="role">Faculty Coordinator</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-avatar">Dr</div>
+                            <h3>Dr. Rakesh Sohal</h3>
+                            <div class="role">Faculty Coordinator</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="text-align: center; color: #2e7d32; margin: 3rem 0 2rem;">Student Coordinators</h3>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-avatar">SG</div>
+                            <h3>Shreya Gautam</h3>
+                            <div class="role">Student Coordinator</div>
+                            <div class="department">CSE 2nd Year</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-avatar">SS</div>
+                            <h3>Saloni Singh Gour</h3>
+                            <div class="role">Student Coordinator</div>
+                            <div class="department">CSE 2nd Year</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-avatar">PP</div>
+                            <h3>Pranav Pratap</h3>
+                            <div class="role">Student Coordinator</div>
+                            <div class="department">AU 3rd Year</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-avatar">RS</div>
+                            <h3>Rakshita Sharma</h3>
+                            <div class="role">Student Coordinator</div>
+                            <div class="department">CSE 1st Year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <div class="contact">
+                <h2>Get In Touch</h2>
+                <p>Ready to join our green energy mission? Contact us today!</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <span>9425360239</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>9425341421</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(46, 125, 50, 0.98)';
+            } else {
+                header.style.background = 'rgba(46, 125, 50, 0.95)';
+            }
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Animate timeline items on scroll
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.2}s`;
+            observer.observe(item);
+        });
+
+        // Animate counter numbers
+        function animateCounters() {
+            const counters = document.querySelectorAll('.impact-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000; // 2 seconds
+                const step = target / (duration / 16); // 60fps
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current);
+                    }
+                }, 16);
+            });
+        }
+
+        // Animate counters when impact section is visible
+        const impactSection = document.querySelector('.impact-section');
+        if (impactSection) {
+            const impactObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        impactObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            impactObserver.observe(impactSection);
+        }
+
+        // Add click effects to gallery items
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    item.style.transform = 'scale(1.05) rotate(5deg)';
+                }, 100);
+            });
+        });
+
+        // Add parallax effect to floating icons
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = scrolled * 0.5;
+            
+            document.querySelectorAll('.floating-icon').forEach((icon, index) => {
+                icon.style.transform = `translateY(${parallax * (index + 1) * 0.1}px)`;
+            });
+        });
+
+        // Observe all cards
+        document.querySelectorAll('.card, .project-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add hover effect to floating icons
+        document.querySelectorAll('.floating-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'scale(1.5) translateY(-10px)';
+                icon.style.opacity = '0.8';
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'scale(1) translateY(0px)';
+                icon.style.opacity = '0.3';
+            });
+        });
+
+        // Add interactive particles effect
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: #4CAF50;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: -1;
+                opacity: 0.6;
+            `;
+            
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            
+            document.body.appendChild(particle);
+            
+            const duration = Math.random() * 3000 + 2000;
+            const drift = (Math.random() - 0.5) * 100;
+            
+            particle.animate([
+                { transform: `translateY(0px) translateX(0px)`, opacity: 0.6 },
+                { transform: `translateY(-${window.innerHeight + 100}px) translateX(${drift}px)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'linear'
+            }).onfinish = () => particle.remove();
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+    </script>
+</body>
+</html>
